@@ -1,7 +1,8 @@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
-$BaseFolder = "C:\Users\Yannick\Documents\Unrailed Backuper"
+$DocumentsFolder = [Environment]::GetFolderPath("MyDocuments")
+$BaseFolder = Join-Path $DocumentsFolder "Unrailed Backuper"
 $GameProcessName = "UnrailedGameEpic"
 $RestoreScript = Join-Path $BaseFolder "unrailed-restore-window.ps1"
 $VbsLauncher = Join-Path $BaseFolder "start-unrailed-watcher-hidden.vbs"

@@ -1,7 +1,8 @@
 Add-Type -AssemblyName System.Windows.Forms
 Add-Type -AssemblyName System.Drawing
 
-$BaseFolder = "$env:USERPROFILE\Documents\Unrailed Backuper"
+$DocumentsFolder = [Environment]::GetFolderPath("MyDocuments")
+$BaseFolder = Join-Path $DocumentsFolder "Unrailed Backuper"
 $SaveFolder = "$env:USERPROFILE\AppData\Local\Daedalic Entertainment GmbH\Unrailed\GameState\AllPlayers\SaveGames"
 $BackupFolder = Join-Path $BaseFolder "Backups"
 
