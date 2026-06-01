@@ -1,0 +1,28 @@
+name: Build Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Inno Setup
+        run: choco install innosetup -y
+
+      - name: Build installer
+        run: |
+          iscc installer\UnrailedBackuper.iss
+
+      - name: Upload installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: UnrailedBackuperSetup
+          path: dist\UnrailedBackuperSetup.exe
